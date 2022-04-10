@@ -342,7 +342,7 @@ def get_new_airdrops():
                 if newDrop:
                     db.session.add(newDrop)
                     db.session.commit()
-get_new_airdrops()
+# get_new_airdrops()
     
 # Send email reminders to users
 def send_reminder():
@@ -354,7 +354,7 @@ def send_reminder():
             send_notification_email('ram.bharwani@yahoo.com', element.project_name, element.reminder)
         else:
             ...
-send_reminder()
+# send_reminder()
 
 
 #update project status
@@ -378,4 +378,4 @@ def update_airdrop():
         if Airdrop.time_difference(elem.start_date) <= 0:
             elem.status = "ONGOING"
             db.session.commit()    
-update_airdrop()
+# update_airdrop()
