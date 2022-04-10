@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+ 
+<title> {% block title%} SignUp {% endblock%} </title>
+ 
+{% block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center mt-3"> 
+            <h1 class="signup-header"> Create New Account </h1>
+        </div>
+        <div class="col-12 d-flex align-items-center justify-content-center mt-3 ">
+
+            <form action="/signup" method="post" class="signupform">
+                {{form.hidden_tag()}}
+                {% for field in form if 
+                    field.widget.input_type != 'hidden' %}
+
+                    <div class="form-group">
+                        <p>
+                            {{field.label}} 
+                            {{field(class_='form-control form-control-lg"')}}
+                        </p>
+                        
+                        <!-- form error -->
+                        {%for error in field.errors %}
+                            {{error}}
+                        {%endfor%}
+                    </div>
+                {%endfor%}
+                <button type="submit" class="btn btn-primary">SIGN UP</button>
+            </form>
+        </div>
+         
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {%block title %}Base{%endblock%} </title>
+
+    <!--  -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
+    <link rel="manifest" href="/static/images/site.webmanifest">
+    <link rel="mask-icon" href="/static/images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/f46733f5ca.js" crossorigin="anonymous"></script> 
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/style.css') }}">
+
+</head>
+
+<body>
+    <!-- navigation -->
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="/"><i class="fa-solid fa-gift"></i> BITDROPS</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Menu
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/">Home</a>
+                                <a class="dropdown-item" href="/airdrops/ongoing"> Ongoing Airdrops</a>
+                                <a class="dropdown-item" href="/airdrops/upcoming">Upcoming Airdrops</a>
+                                <a class="dropdown-item" href="/airdrops/ended">Ended Airdrops</a>
+                                {% if 'CURR_USER_KEY' in session %}
+                                    <a class="dropdown-item" href="/bitdrops/favorites/list">Favorites</a>
+                                    <a class="dropdown-item" href="#">Profile</a>
+                                {%endif%}
+                                <a class="dropdown-item" href="/bitdrops/participate">How To Participate</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/bitdrops/aboutus">About Us</a>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <!-- if user's signed in diplay Logout & favorites. 
+                        else display signup and log out -->
+                        {% if 'CURR_USER_KEY' in session %}
+                            <ul class="navbar-nav  my-lg-0 d-flex align-items-start justify-content-cente">
+                                <!-- favorites icon -->
+                                <li class="nav-item d-flex align-items-center justify-content-center">
+                                    <a href="/bitdrops/favorites/list" class="nav-link">
+                                        <i class="fa-solid fa-bookmark mx-2" ></i>
+                                    </a>
+                                </li>
+
+                                <!-- user icon -->
+                                <li class="nav-item d-flex align-items-center justify-content-center">
+                                    <a href=/bitdrops/profile/{{g.user.id}} class="nav-link">
+                                        <i class="fa-solid fa-user mx-2" ></i>
+                                    </a>
+                                </li>
+
+                                <!-- logout -->
+                                <li class="nav-item">
+                                    <form action="/logout" method="post">
+                                        <button type="submit" class="nav-link btn btn-outline-primary mx-2 ">
+                                            LOGOUT
+                                        </button>
+                                    </form>
+                                </li>
+
+                            </ul>
+                        {%endif%}
+
+                        {%if 'CURR_USER_KEY' not in session %}
+                            <ul class="navbar-nav my-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link btn btn-outline-primary mx-2" href="/signup">Sign Up </a> 
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link btn btn-outline-primary mx-2" href="/login"> Log In </a>
+                                </li>
+                            </ul>
+                        {%endif%}
+
+
+                        <form class="form-inline my-2 my-lg-0" action="/search" method="get">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form> 
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- flash messages -->
+    <div class="container">
+        <div class="row">
+            <div class="col-12 flash d-flex align-items-center justify-content-center">
+                {% for category,msg in get_flashed_messages(with_categories=true) %}
+                    <p class="flash-p {{category}}">{{msg}}</p>
+                {%endfor%}
+            </div>
+        </div>
+
+    </div>
+    <!-- Content block for inheritance -->
+    {% block content %}
+    {%endblock%}
+    
+    
+    {% include "footer.html" %}
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

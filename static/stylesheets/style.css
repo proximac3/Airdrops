@@ -1,0 +1,463 @@
+body{
+  background-color: rgb(241, 241, 241);
+}
+
+/* project page styling */
+.project-details{
+  font-family: courier;
+  font-size: 1.4rem;
+}
+
+/* project title on project page  */
+.project_title{
+  width: 80%;
+  font-family: courier;
+  font-weight: bold;
+}
+
+.project-list-details{
+  font-family: courier;
+  font-size: 1.1rem;
+}
+
+.ongoing{
+  border-radius: 4px;
+  background-color: green;
+  font-size:1.6rem;
+  color: white;
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+}
+
+.upcoming{
+  border-radius: 4px;
+  background-color: rgb(189, 189, 5);
+  font-size:1.6rem;
+  color: white;
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+}
+
+.ended{
+  border-radius: 4px;
+  background-color: rgb(146, 9, 9);
+  font-size:1.6rem;
+  color: white;
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+}
+
+.days-left{
+  border-radius: 4px;
+  background-color: rgb(219, 219, 219);
+  font-size: 1.2rem;
+  display: inline-block;
+  width: 13%;
+  text-align: center;
+  font-weight: bold;
+  padding: 0px 1px;
+}
+
+.card{
+  box-shadow: 0px 0px 10px 3px  #706f6f
+}
+
+/* Homepage project Card Styling */
+.title-head{
+    background-color: #212529;
+    /* border: 1px solid skyblue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: lucida;
+    border-radius: 5px;
+    font-size: 1.8rem;
+    margin: 20px 0px;
+    font-weight: bold;
+}
+
+.title-head:hover{
+  background-color: #6b6b6b;
+  transition-duration: 0.5s;
+}
+
+
+.title-head > a {
+  color: rgb(228, 228, 228)
+}
+
+.project-card{
+    font-family: courier;
+    margin: 18px 5px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 5px 2px  #706f6f
+}
+
+.project-card:hover {
+  transform: scale(1.1,1.1);
+  transition-duration: 0.5s;
+  box-shadow: 0px 0px 6px 2px rgb(79, 154, 184)
+}
+
+.home_project_title{
+  padding: 5px 5px;
+}
+
+.prize_div {
+  padding: 5px 5px;
+}
+
+.favorite_div{
+  padding: 5px 5px;
+}
+
+/* table styling for Ongoing, upcoming and Ended  */
+.table-column{
+  border-radius: 5px;
+  font-family: courier;
+  font-size: 1.1rem
+}
+
+.table-column:hover{
+  transform: scale(1.1,1.1);
+  transition-duration: 0.5s;
+  box-shadow: 0px 0px 5px 1px rgb(79, 154, 184)
+}
+
+.table-header{
+  text-align: center;
+  margin: 15px 0px;
+  font-family: courier;
+  /* font-weight: bold; */
+}
+
+/* view all home page link styling */
+.view_all {
+  text-align: center;
+  color: white;
+  background-color: #212529;
+  border-radius: 5px
+}
+
+.view_all:hover {
+  background-color: #6b6b6b;
+  transition-duration: 0.5s;
+}
+
+.view_all > a {
+  text-decoration: none;
+  color: rgb(228, 228, 228);
+  font-family: courier;
+}
+
+
+
+/* signup form styling */
+.signupform {
+    width: 80%;
+    font-family: courier;
+    font-size: 2rem;
+}
+
+.signup-header{
+  font-family: courier;
+}
+
+/* Login form styling */
+.loginform {
+    width: 80%;
+    font-family: courier;
+    font-size: 2rem;
+}
+
+.login-header {
+  font-family:courier;
+}
+
+
+/* favorites icon style */
+.favorite_icon{
+  /* color: skyblue; */
+  font-size: 1.5rem;
+}
+
+.favorite_icon_selected {
+  color: skyblue;
+  font-size: 1.5rem;
+}
+
+/* favorite page styles */
+.favorite-title{
+  color: rgb(228, 228, 228);
+  background-color: #212529;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: lucida;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  margin: 20px 0px;
+  font-weight: bold;
+}
+
+.prize_div_fav{
+  width: 80%;
+  padding-left: 10px;
+}
+
+.fav_project_name{
+  padding-left:10px;
+  padding-top: 5px;
+}
+
+/* prize ul style */
+.prize_fav_div{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.prize_div{
+  width: 80%;
+}
+
+.favorite_div {
+  width: 20%;
+  margin: 0px 0px;
+  display: inline;
+}
+
+/* favorite page reminder bell style */
+.reminder{
+  margin: 0px 6px;
+  font-size: 1.5rem;
+}
+
+/* pop up screen style */
+.popup{
+  background-color:#212529;
+  width: 40%;
+  margin:auto;
+  box-shadow: 0px 0px 7px 2px  #706f6f;
+  border-radius: 3px;
+  padding-top: 10px;
+  padding-bottom: 3px;
+  position: absolute;
+  z-index: 10;
+  transform: translate(70%, 10%);
+}
+
+.popup-title{
+  text-align: center;
+  font-family: courier;
+  color: white;
+}
+
+.reminder-submit{
+  width: 50%;
+  margin: auto;
+  display: block;
+  margin-top: 10px;
+  color: white;
+}
+.cancel-button{
+  width: 50%;
+  margin: auto;
+  display: block;
+  margin-top: 10px;
+  color: white;
+}
+
+.reminder-form{
+  padding: 2px 8px;
+  color: white;
+}
+
+.reminder-project{
+  padding: 2px 8px;
+  color: white;
+}
+
+
+/* bad search results styling */
+.bad-search{
+  font-family: courier;
+  font-size:2rem;
+  font-weight:bold;
+  color: rgb(134, 5, 5);
+}
+
+/* Footer Styling */
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
+
+body {
+    font-family: 'Alegreya Sans', sans-serif;
+}
+
+/* Sticky footer position and size
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 300px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 120px;
+}
+
+/* Taller footer on small screens */
+@media only screen and (min-width: 5px){
+    body {
+      margin-bottom: 700px;
+    }
+    .footer{
+        height: 540px;
+    }
+}
+
+@media only screen and (min-width: 300px){
+    body {
+      margin-bottom: 700px;
+    }
+    .footer{
+        height: 530px;
+    }
+    .days-left{
+      font-size: 1rem;
+      width: 20%;
+    }
+    .upcoming{
+      width: 25%;
+      font-size: 1.4rem;
+    }
+    .ongoing{
+      width: 25%;
+      font-size: 1.4rem;
+    }
+    .ended{
+      width: 25%;
+      font-size: 1.4rem;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    body {
+      margin-bottom: 700px;
+    }
+    .footer{
+        height: 300px;
+    }
+    .days-left{
+      font-size: 1.2rem;
+      width: 18%;
+    }
+    .upcoming{
+      width: 20%;
+      font-size: 1.6rem
+    }
+    .ongoing{
+      width: 20%;
+      font-size: 1.6rem
+    }
+    .ended{
+      width: 20%;
+      font-size: 1.6rem
+    }
+}
+
+
+/* Sticky footer style and color
+-------------------------------------------------- */
+footer {
+  padding-top: 30px;
+  background-color: #292c2f;
+  color: #bbb;
+}
+
+footer a {
+  color: #999;
+  text-decoration:none;
+}
+
+footer a:hover, footer a:focus {
+  color: #aaa;
+  text-decoration:none;
+  border-bottom:1px dotted #999;
+}
+
+footer .form-control {
+    background-color: #1f2022;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    border: none;
+    resize: none;
+    color: #d1d2d2;
+    padding: 0.7em 1em;
+}
+
+
+
+/* flash messages */
+.flash {
+  border-radius: 5px;
+  font-family: courier;
+  margin-top: 5px;
+  font-weight: bold;
+  color: rgb(10, 158, 10)
+}
+
+.flash-p{
+  display: inline-block;
+  margin: 0px 0px;
+}
+
+.success{
+  color: green;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.error{
+  color: rgb(209, 12, 12);
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+/* search styling */
+.search_header{
+  width: 90%;
+}
+
+.custom-select{
+  width: 100%;
+}
+
+.filter-btn{
+  margin: 5px 5px
+}
+
+
+.reset{
+  /* Margin: 0px 50%; */
+  margin-left: 10%;
+}
+
+
+/* about is page */
+.aboutus{
+  font-family: courier;
+  font-size: 1.2rem
+}

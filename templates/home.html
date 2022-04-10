@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+ 
+<title> {% block title%} Bitdrops {% endblock%} </title>
+ 
+{% block content%} 
+    <div class="container">
+        <div class="row">
+
+            {% if 'CURR_USER_KEY' in session %}
+            <!-- Ongoing airdrops -->
+                <div class="col-12 col-lg-4" >
+                    <p class="title-head">
+                        <a href="/airdrops/ongoing" 
+                        style="text-decoration:none"> Ongoing Airdrops </a> 
+                    </p>
+                    {% for element in ongoing%}
+                        <div class="project-card">
+                            <p class="home_project_title"> <b>Project: </b> <a href="/airdrops/project/{{element.id}}"> {{element.project_name}}</a> </p>
+                            
+                            <div class="prize_fav_div">
+                                <div class="prize_div"><p> <b> Total Prize:</b> {{element.total_prize}} Coins</p></div>
+                                {%if element.project_name in session['user_favorites']%}
+                                    <div class="favorite_div"><i class="fa-solid fa-bookmark favorite_icon favorite_icon_selected" 
+                                        id="{{element.id}}" data-pn="{{element.project_name}}"></i></div>
+                                {%else%} 
+                                    <div class="favorite_div"><i class="fa-solid fa-bookmark favorite_icon" 
+                                        id="{{element.id}}" data-pn="{{element.project_name}}"></i></div> 
+                                {%endif%}
+                            </div>
+
+                        </div>
+                    {% endfor %}
+                    <p class="view_all"><a href="/airdrops/ongoing"> View All </a></p>
+                </div>
+            {%else%}
+                <div class="col-12 col-lg-4" >
+                    <p class="title-head"><a href="/airdrops/ongoing" 
+                        style="text-decoration:none"> Ongoing Airdrops </a> </p>
+                    {% for element in ongoing%}
+                        <div class="project-card">
+                            <p class="home_project_title"> <b>Project: </b> <a href="/airdrops/project/{{element.id}}"> {{element.project_name}}</a> </p>
+                            <div class="prize_fav_div">
+                                <div class="prize_div"><p><b> Total Prize:</b> {{element.total_prize}} Coins</p></div> 
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <p class="view_all"><a href="/airdrops/ongoing"> View All </a></p>
+                </div>
+            {%endif%}
+            
+            {% if 'CURR_USER_KEY' in session %}
+            <!-- Upcoming Airdrops -->
+                <div class="col-12 col-lg-4">
+                    <p class="title-head "><a href="/airdrops/upcoming" style="text-decoration:none"> 
+                        Upcoming Airdrops </a> </p>
+                    {% for element in upcoming%}
+                        <div class="project-card">
+                            <p class="home_project_title"><b>Project: </b> <a href="/airdrops/project/{{element.id}}"> {{element.project_name}}</a> </p>
+                            <div class="prize_fav_div">
+                                <div class="prize_div"><p><b>Total Prize:</b> {{element.total_prize}} Coins</p></div> 
+                                 {%if element.project_name in session['user_favorites']%}
+                                    <div class="favorite_div"><i class="fa-solid fa-bookmark favorite_icon favorite_icon_selected" 
+                                        id="{{element.id}}" data-pn="{{element.project_name}}"></i></div>
+                                {%else%} 
+                                    <div class="favorite_div"><i class="fa-solid fa-bookmark favorite_icon" 
+                                        id="{{element.id}}" data-pn="{{element.project_name}}"></i></div> 
+                                {%endif%}
+                            </div>
+                        </div>
+                    {%endfor%}
+                    <p class="view_all"><a href="/airdrops/upcoming"> View All </a></p>
+                </div>
+                {%else%}
+                    <div class="col-12 col-lg-4">
+                        <p class="title-head "><a href="/airdrops/upcoming" style="text-decoration:none"> 
+                            Upcoming Airdrops </a> </p>
+                        {% for element in upcoming%}
+                            <div class="project-card">
+                                <p class="home_project_title"><b>Project: </b> <a href="/airdrops/project/{{element.id}}"> {{element.project_name}}</a> </p>
+                                <div class="prize_fav_div">
+                                    <div class="prize_div"><p><b> Total Prize:</b> {{element.total_prize}} Coins</p></div>  
+                                </div>
+                            </div>
+                        {%endfor%}
+                        <p class="view_all"><a href="/airdrops/upcoming"> View All </a></p>
+                    </div>
+            {%endif%}
+
+            {% if 'CURR_USER_KEY' in session %}
+            <!-- Ended airdrops -->
+                <div class="col-12 col-lg-4">
+                    <p class="title-head "><a href="/airdrops/ended" style="text-decoration:none"> 
+                        Ended Airdrops </a> </p>
+                    {% for element in ended%}
+                        <div class="project-card">
+                            <p class="home_project_title"><b>Project: </b> <a href="/airdrops/project/{{element.id}}"> {{element.project_name}}</a> </p>
+                            <div class="prize_fav_div">
+                                <div class="prize_div"><p><b> Total Prize:</b> {{element.total_prize}} Coins</p></div> 
+                                 {%if element.project_name in session['user_favorites']%}
+                                    <div class="favorite_div"><i class="fa-solid fa-bookmark favorite_icon favorite_icon_selected" 
+                                        id="{{element.id}}" data-pn="{{element.project_name}}"></i></div>
+                                {%else%} 
+                                    <div class="favorite_div"><i class="fa-solid fa-bookmark favorite_icon" 
+                                        id="{{element.id}}" data-pn="{{element.project_name}}"></i></div> 
+                                {%endif%}
+                            </div>
+                        </div>
+                    {%endfor%}
+                    <p class="view_all"><a href="/airdrops/ended"> View All </a></p>
+                </div>
+                {%else%}
+                    <div class="col-12 col-lg-4">
+                        <p class="title-head "><a href="/airdrops/ended" style="text-decoration:none"> 
+                            Ended Airdrops </a> </p>
+                        {% for element in ended%}
+                            <div class="project-card">
+                                <p class="home_project_title"><b>Project: </b> <a href="/airdrops/project/{{element.id}}"> {{element.project_name}}</a> </p>
+                                <div class="prize_fav_div">
+                                    <div class="prize_div"><p><b> Total Prize:</b> {{element.total_prize}} Coins</p></div> 
+                                </div>
+                            </div>
+                        {%endfor%}
+                        <p class="view_all"><a href="/airdrops/ended"> View All </a></p>
+                    </div>
+            {%endif%}
+        </div>
+    </div>
+
+{% endblock %}
+

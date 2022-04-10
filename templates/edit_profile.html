@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+ 
+<title> {% block title%} Profile {% endblock%} </title>
+ 
+{% block content%}
+
+{% if 'CURR_USER_KEY' in session %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <h1>Update user profile</h1>
+
+                <form action=/bitdrops/edit/profile/{{g.user.id}} method="post">
+                    {{form.hidden_tag()}}
+
+                    {%for field in form if 
+                        field.widget.input_type != 'hidden'%}
+
+                        <div class="form-group">
+                            <p>{{field.label}}</p>
+                            <p>{{field(class_='form-control form-control-lg"')}}</p>
+                        </div>
+                    {%endfor%}
+
+                    <button class="btn btn-primary">
+                        SUbmit
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+{%else%}
+{%endif%}
+
+{%endblock%}

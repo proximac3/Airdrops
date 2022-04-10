@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+ 
+<title> {% block title%} Airdrop Project {% endblock%} </title>
+ 
+{% block content%}
+    <div class="container">
+        <div class="row">
+            <div  class="col-12 d-flex justify-content-center mt-4 project-details"> Project Details </div>
+            <div class="col-12 d-flex justify-content-center mt-4">
+                <div class="card" style="width: 60rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <div class="prize_fav_div">
+                                <h2 class="project_title">{{project.project_name}}</h2>
+                                {% if 'CURR_USER_KEY' in session %}
+                                    <div class="favorite_div d-flex align-items-center justify-content-center">
+                                        {%if project.project_name in session['user_favorites']%}
+                                            <div class="favorite_div"><i class="fa-solid fa-bookmark favorite_icon favorite_icon_selected" 
+                                                id="{{project.id}}" data-pn="{{project.project_name}}"></i></div>
+                                        {%else%} 
+                                            <div class="favorite_div"><i class="fa-solid fa-bookmark favorite_icon" 
+                                                id="{{project.id}}" data-pn="{{project.project_name}}"></i></div> 
+                                        {%endif%}
+                                    </div> 
+                                {%endif%}
+                             </div>
+                        </h5>
+                        <p class="card-text" style="white-space: pre-line">
+                            {{ project.description | safe }}
+                        </p>
+                        <p class="card-text" style="white-space: pre-line">
+                            <a href=""></a>
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush project-list-details">
+                        {%if project.status == 'ONGOING'%}
+                            <li class="list-group-item"><b>Status :</b> <span class="ongoing">{{project.status}}</span> </li>
+                        {%elif project.status == 'UPCOMING'%}
+                            <li class="list-group-item"><b>Status :</b> <span class="upcoming">{{project.status}}</span> </li>
+                        {%elif project.status == 'ENDED'%}
+                            <li class="list-group-item"><b>Status :</b> <span class="ended">{{project.status}}</span> </li>
+                        {%endif%}
+
+                        {% if project.status == 'ONGOING'%}
+                        <li class="list-group-item"><b>Ends In:</b> <span class="days-left">{{time}} Day(s)</span> </li>
+                        {%elif project.status== 'UPCOMING' %}
+                        <li class="list-group-item"><b>Starts In:</b> <span class="days-left">{{time}} Day(s)</span> </li>
+                        {%endif%}
+                        <li class="list-group-item"><b> Start Date :</b> {{project.start_date.strftime('%m-%d-%y')}}</li>
+                        <li class="list-group-item"><b>End Date :</b> {{project.end_date.strftime('%m-%d-%y')}}</li>
+                        <li class="list-group-item"><b>Coin Name :</b> {{project.coin_name}}</li>
+                        <li class="list-group-item"><b> Coin Slug :</b> {{project.coin_slug}}</li>
+                        <li class="list-group-item"><b>Coin Symbol :</b> {{project.coin_symbol}}</li>
+                        <li class="list-group-item"><b> Total Prize :</b> {{project.total_prize}} Coins</li>
+                        <li class="list-group-item"><b> Winner Count :</b> {{project.winner_count}} Participants</li>
+
+                    </ul>
+                    <div class="list-group">
+                        <a href="{{project.project_link}}" class="list-group-item list-group-item-action list-group-item-primary"> Project link : {{project.project_link}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{%endblock%}

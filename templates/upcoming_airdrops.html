@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+ 
+<title> {% block title%} Upcoming Airdrops {% endblock%} </title>
+ 
+{% block content%}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 live_header">
+                <h1 class="table-header"> Upcoming Airdrops </h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table ">
+                    <tr>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                    {% for element in upcoming_Drops%}
+                    <tr class="table-column">
+                        <th>
+                            {% if 'CURR_USER_KEY' in session %}
+                                <div class="prize_fav_div">
+                                    <a class="prize_div" href="/airdrops/project/{{element.id}}">
+                                        {{element.project_name}}</a>
+                                    <div class="favorite_div d-flex align-items-center justify-content-center">
+                                        {%if element.project_name in session['user_favorites']%}
+                                            <div class="favorite_div"><i class="fa-solid fa-bookmark favorite_icon favorite_icon_selected" 
+                                                id="{{element.id}}" data-pn="{{element.project_name}}"></i></div>
+                                        {%else%} 
+                                            <div class="favorite_div"><i class="fa-solid fa-bookmark favorite_icon" 
+                                                id="{{element.id}}" data-pn="{{element.project_name}}"></i></div> 
+                                        {%endif%}
+                                    </div> 
+                                </div>
+                            {%else%}
+                                    <div class="prize_fav_div">
+                                        <a class="prize_div" href="/airdrops/project/{{element.id}}">
+                                            {{element.project_name}}</a>
+                                    </div>
+                            {%endif%}
+                        </th>
+                        <th>{{element.status}}</th>
+                        <th>{{element.start_date.strftime('%m-%d-%y')}}</th>
+                        <th>{{element.end_date.strftime('%m-%d-%y')}}</th>
+                    </tr>
+                    {%endfor%}
+                </table>
+            </div>
+        </div>
+    </div>
+    {%endblock%}

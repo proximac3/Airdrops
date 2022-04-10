@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+ 
+<title> {% block title%} Favorites {% endblock%} </title>
+ 
+{% block content%} 
+
+    <div class="container">
+        <div class="row">
+            <!-- Favorites-->
+            <div class="col-12" >
+                <p class="favorite-title">
+                    Favorite Projects
+                </p>
+
+                <!-- reminder pop up form -->
+                <div class="popup" style="display: none">
+                    <p class="popup-title"> Set Email reminder for project. </p>
+                    <p class="reminder-project"> </p>
+
+                    <div class="form-group reminder-form">
+                        <form action="" class="">
+                            <label for="reminder"> Remind me :  </label>
+                            <select name="reminder" id="reminder" class="form-control form-control-sm select-options">
+                                <option value="starts"> One day before project begins </option>
+                                <option value="ends"> One day before project ends </option>
+                            </select>
+                            <button type="submit" class="btn btn-outline-primary reminder-submit">SUBMIT</button>
+                        </form>
+                    </div>
+                    <button class="btn btn-outline-danger cancel-button">cancel</button>
+                </div>
+
+                {% for element in favorites%}
+                    <div class="project-card">
+                        <p class="fav_project_name"> 
+                            <b>Project :</b> <a href="/airdrops/project/{{element.project.id}}"> 
+                                {{element.project.project_name}}</a> 
+                        </p>
+
+                        <div class="prize_fav_div">
+                            <div class="prize_div_fav">
+                                <p><b>Total Prize: </b>{{element.project.total_prize}}</p>
+                                <p><b> Status: </b>{{element.project.status}}</p>
+                            </div> 
+
+                            {%if element.project_name in session['user_favorites']%}
+                                <div class="favorite_div">
+                                    <i class="fa-solid fa-bookmark favorite_icon favorite_icon_selected" 
+                                    id="{{element.project.id}}" data-pn="{{element.project_name}}">
+                                    </i>
+
+                                    <i class="fa-regular fa-bell  reminder"
+                                    id={{element.project.id}} data-pn="{{element.project_name}}">
+                                    </i>
+
+                                </div>
+                            {%else%} 
+                                <div class="favorite_div"><i class="fa-solid fa-bookmark favorite_icon" 
+                                    id="{{element.project.id}}" data-pn="{{element.project_name}}"></i></div> 
+                            {%endif%}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

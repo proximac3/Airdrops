@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+ 
+<title> {% block title%} Profile {% endblock%} </title>
+ 
+{% block content%}
+
+{% if 'CURR_USER_KEY' in session %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1> {{g.user.username}}</h1>
+                <p>Username : {{g.user.username}}</p>
+                <p>Email : {{g.user.email}}</p>
+
+                <div>
+                    <button class="btn btn-outline-primary">
+                        <a href="/">Go back</a>
+                    </button>
+                    <button class="btn btn-outline-primary">
+                        <a href="/bitdrops/edit/profile/{{g.user.id}}">Edit Profile</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{%else%}
+{%endif%}
+
+{%endblock%}

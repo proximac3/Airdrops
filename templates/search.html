@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+ 
+<title> {% block title%} Search  {%endblock%} </title>
+ 
+{% block content%}
+    <div class="container">
+        <div class="row">
+            <!-- Favorites-->
+            <div class="col-12" >
+                <div class="favorite-title">
+                    <div class="search_header">
+                        <p class="favorite-title">
+                            Search Results
+                        </p>
+                    </div>
+
+                </div>
+                {% for element in projects%}
+                    <div class="project-card">
+                        <p> 
+                            <b>Project :</b> <a href="/airdrops/project/{{element.id}}"> 
+                                {{element.project_name}}</a> 
+                        </p>
+                        <div class="prize_fav_div">
+                            <div class="prize_div">
+                                <p><b>Total Prize: </b>{{element.total_prize}}</p>
+                                <p><b> Status: </b>{{element.status}}</p>
+                            </div> 
+
+                            {%if element.project_name in session['user_favorites']%}
+                                <div class="favorite_div">
+                                    <i class="fa-solid fa-bookmark favorite_icon favorite_icon_selected" 
+                                    id="{{element.id}}" data-pn="{{element.project_name}}">
+                                    </i>
+                                </div>
+                            {%else%} 
+                                <div class="favorite_div"><i class="fa-solid fa-bookmark favorite_icon" 
+                                    id="{{element.id}}" data-pn="{{element.project_name}}"></i></div> 
+                            {%endif%}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{%endblock%}
