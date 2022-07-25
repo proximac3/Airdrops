@@ -17,7 +17,7 @@ Back End: Python, Flask, Flask-WTForm, SqlAlchemy, Postgresql, Jinja2, Twilio, S
 https://bitdrops.herokuapp.com/
 
 ## Home
-The homepage displays three columns. Ongoing, Upcoming, and Ended.
+Homepage displays three columns. Ongoing, Upcoming, and Ended.
 
 Ongoing are Airdrops that are currently ongoing. Click on a project to view project details.
 
@@ -27,3 +27,9 @@ Ended are past airdrops that have ended. Click on a project to view project deta
 
 ## Project Details
 Project details contain all information about an airdrop.
+
+## Favorites
+Users favorite projects
+
+## Reminder
+Set Email reminders for project
